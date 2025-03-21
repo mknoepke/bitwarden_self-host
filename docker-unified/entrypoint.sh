@@ -82,7 +82,7 @@ fi
 # Launch a loop to rotate nginx logs on a daily basis
 /bin/sh -c "/logrotate.sh loop >/dev/null 2>&1 &"
 
-/usr/local/bin/hbs
+/bin/sh -c 'unset http_proxy; unset https_proxy; unset no_proxy; /usr/local/bin/hbs'
 
 # Enable/Disable services
 sed -i "s/autostart=true/autostart=${BW_ENABLE_ADMIN}/" /etc/supervisor.d/admin.ini
